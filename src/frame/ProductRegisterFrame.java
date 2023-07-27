@@ -116,6 +116,12 @@ public class ProductRegisterFrame extends JFrame {
 				String productCategoryName = (String) categoryComboBox.getSelectedItem();
 				if(CustomSwingTextUtil.isTextEmpty(contentPane, productCategoryName)) {return;}
 				
+				if(ProductColorService.getInstance().isProductColorNameDuplicated(productColorName)) {
+					JOptionPane.showMessageDialog(contentPane, "이미 존재하는 상품명입니다.", "중복오류", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+
+				
 				Product product = Product.builder()
 						.productName(productName)
 						.productPrice(Integer.parseInt(productPrice))

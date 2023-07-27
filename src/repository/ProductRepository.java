@@ -2,10 +2,13 @@ package repository;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import config.DBConnectionMgr;
 import entity.Product;
+import entity.ProductColor;
 
 public class ProductRepository {
 	
@@ -22,6 +25,7 @@ public class ProductRepository {
 		}
 		return instance;
 	}
+
 	
 	public int saveProduct(Product product) {
 		Connection con = null;
