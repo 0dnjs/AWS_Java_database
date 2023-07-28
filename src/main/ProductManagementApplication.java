@@ -1,16 +1,18 @@
 package main;
 
 import java.awt.EventQueue;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import frame.ProductCategoryRegisterFrame;
+import frame.ProductColorRegisterFrame;
 import frame.ProductRegisterFrame;
-
-import javax.swing.JButton;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import frame.ProductSearchFrame;
 
 public class ProductManagementApplication extends JFrame {
 
@@ -38,19 +40,52 @@ public class ProductManagementApplication extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		JButton productColorRegisterFrameOpenButton = new JButton("상품색상등록");
+		productColorRegisterFrameOpenButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ProductColorRegisterFrame productColorRegisterFrame = 
+						new ProductColorRegisterFrame();
+				productColorRegisterFrame.setVisible(true);
+			}
+		});
+		productColorRegisterFrameOpenButton.setBounds(46, 129, 376, 45);
+		contentPane.add(productColorRegisterFrameOpenButton);
+		
+		JButton productSearchFrameOpenButton = new JButton("상품조회");
+		productSearchFrameOpenButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ProductSearchFrame productSearchFrame = 
+						ProductSearchFrame.getInstance();
+				productSearchFrame.setVisible(true);
+			}
+		});
+		productSearchFrameOpenButton.setBounds(46, 22, 376, 45);
+		contentPane.add(productSearchFrameOpenButton);
+		
 		JButton productRegisterFrameOpenButton = new JButton("상품등록");
 		productRegisterFrameOpenButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ProductRegisterFrame productRegisterFrame = new ProductRegisterFrame();
+				ProductRegisterFrame productRegisterFrame = 
+						new ProductRegisterFrame();
 				productRegisterFrame.setVisible(true);
 			}
 		});
-		productRegisterFrameOpenButton.setBounds(85, 111, 97, 23);
+		productRegisterFrameOpenButton.setBounds(46, 74, 376, 45);
 		contentPane.add(productRegisterFrameOpenButton);
 		
-		JButton productListFrameOpenButton = new JButton("상품조회");
-		productListFrameOpenButton.setBounds(251, 111, 97, 23);
-		contentPane.add(productListFrameOpenButton);
+		JButton productCategoryRegisterFrameOpenButton = new JButton("상품카테고리등록");
+		productCategoryRegisterFrameOpenButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ProductCategoryRegisterFrame productCategoryRegisterFrame = 
+						new ProductCategoryRegisterFrame();
+				productCategoryRegisterFrame.setVisible(true);
+			}
+		});
+		productCategoryRegisterFrameOpenButton.setBounds(46, 184, 376, 45);
+		contentPane.add(productCategoryRegisterFrameOpenButton);
 	}
 }
